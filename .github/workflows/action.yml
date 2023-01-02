@@ -1,0 +1,36 @@
+name: Actions Workflow
+
+# on: [push,pull_request]
+on:
+  push:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
+  # repository_dispatch:
+  #   types: [build]
+  # schedule:
+  #   - cron: "0/5 * * * *"
+  #   - cron: "0/6 * * * *"
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files
+        run: |
+          pwd
+          ls -a
+      - name: Checkout
+        uses: actions/checkout@v3
+      # git clone git@github:$GITHUB_REPOSITORY
+      # git checkout $GITHUB_SHA
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls -a
+      - name: Simple Action
+        id: greet
+        uses: actions/hello-world-javascript-action@main
+        with:
+          who-to-greet: Rain
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time }}"
