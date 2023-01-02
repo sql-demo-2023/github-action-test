@@ -10,7 +10,7 @@ jobs:
         include:
           - os: ubuntu-latest
             node_version: 18
-            is_ubuntu_8: "true"
+            is_ubuntu_18: "true"
         exclude:
           - os: ubuntu-latest
             node_version: 16
