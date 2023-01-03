@@ -2,17 +2,7 @@ name: Context
 on: [push, pull_request]
 
 jobs:
-  functions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: dump
-        run: |
-          echo ${{ contains( 'hello', '11' ) }}
-          echo ${{ startsWith( 'hello', 'he' ) }}
-          echo ${{ endsWith( 'hello', '1o' ) }}
-          echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
-
-  one:
+  context:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
